@@ -17,9 +17,8 @@ for command in commands:
 
         if command.find('delay') != -1:
             sec = float(command.partition('delay')[2])
-            print 'delay %s' % sec
+            print('delay %s' % sec)
             time.sleep(sec)
-            pass
         else:
             tello.send_command(command)
 
@@ -28,5 +27,8 @@ log = tello.get_log()
 out = open('log/' + start_time + '.txt', 'w')
 for stat in log:
     stat.print_stats()
-    str = stat.return_stats()
-    out.write(str)
+    str_stats = stat.return_stats()
+    out.write(str_stats)
+
+f.close()
+out.close()
